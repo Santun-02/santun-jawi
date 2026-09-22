@@ -38,6 +38,11 @@
             color: white;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+        .quiz-mode-active {
+            background-color: #059669 !important;
+            color: #ffffff !important;
+            border-color: #059669 !important;
+        }
         @keyframes pulse-ring {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
             70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
@@ -275,36 +280,62 @@
         <!-- TAB 4: KUIZ INTERAKTIF -->
         <section id="sec-kuiz" class="tab-content hidden space-y-6">
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm max-w-3xl mx-auto">
-                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                
+                <!-- Quiz Header & Mode Selector -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-4">
                     <div>
-                        <h2 class="text-2xl font-bold font-title text-slate-800">🎯 Kuiz Mengecam Huruf Jawi</h2>
-                        <p class="text-xs text-slate-500">Uji kefahaman anda padankan huruf Jawi dengan sebutan Rumi!</p>
+                        <h2 class="text-2xl font-bold font-title text-slate-800">🎯 Kuiz Interaktif Jawi</h2>
+                        <p class="text-xs text-slate-500">Pilih mod kuiz dan uji tahap penguasaan tulisan Jawi anda!</p>
                     </div>
-                    <div class="bg-amber-100 text-amber-900 px-3 py-1 rounded-xl font-bold text-sm">
-                        Markah: <span id="quiz-score" class="text-emerald-700 text-lg">0</span>
+                    <div class="bg-amber-100 text-amber-900 px-4 py-1.5 rounded-xl font-bold text-sm flex items-center gap-1 self-start sm:self-auto">
+                        <span>Markah:</span>
+                        <span id="quiz-score" class="text-emerald-700 text-xl font-extrabold">0</span>
                     </div>
                 </div>
 
+                <!-- Quiz Mode Selector Tabs -->
+                <div class="grid grid-cols-2 gap-3 mb-6 bg-slate-100 p-1.5 rounded-2xl">
+                    <button onclick="switchQuizMode('matching')" id="btn-mode-matching" class="py-2 px-3 rounded-xl font-bold text-xs sm:text-sm text-slate-600 transition-all quiz-mode-active border border-transparent">
+                        📌 Mod 1: Padanan Huruf & Sebutan
+                    </button>
+                    <button onclick="switchQuizMode('fillblank')" id="btn-mode-fillblank" class="py-2 px-3 rounded-xl font-bold text-xs sm:text-sm text-slate-600 transition-all border border-transparent">
+                        ✏️ Mod 2: Isi Tempat Kosong
+                    </button>
+                </div>
+
+                <!-- Quiz Main Card Body -->
                 <div id="quiz-card" class="space-y-6">
-                    <div class="text-center py-6 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div class="text-center py-6 bg-slate-50 rounded-2xl border border-slate-200 px-4 relative">
                         <span id="quiz-question-number" class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Soalan 1 daripada 5</span>
-                        <h3 class="text-lg font-bold text-slate-700 mb-4">Apakah sebutan atau padanan Rumi bagi huruf Jawi di bawah?</h3>
-                        <div id="quiz-jawi-display" class="text-8xl font-jawi font-bold text-emerald-700 mb-2">
+                        <h3 id="quiz-question-instruction" class="text-base sm:text-lg font-bold text-slate-700 mb-4">Apakah sebutan atau padanan Rumi bagi huruf Jawi di bawah?</h3>
+                        
+                        <!-- Quiz Display Area (Supports single letter or missing letter word) -->
+                        <div id="quiz-jawi-display" class="text-6xl sm:text-7xl font-jawi font-bold text-emerald-700 mb-3 tracking-wide">
                             ڤ
                         </div>
-                        <button onclick="speakQuizLetter()" class="text-xs text-emerald-600 hover:underline font-semibold inline-flex items-center gap-1">
+
+                        <!-- Hint Tag for Fill-in-the-blank mode -->
+                        <div id="quiz-hint-container" class="hidden my-2">
+                            <span id="quiz-hint-text" class="bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full text-xs sm:text-sm inline-block">
+                                Petunjuk: PANDU
+                            </span>
+                        </div>
+
+                        <button onclick="speakQuizItem()" id="btn-quiz-audio" class="mt-2 text-xs text-emerald-600 hover:underline font-semibold inline-flex items-center gap-1">
                             🔊 Dengarkan Audio MP3
                         </button>
                     </div>
 
+                    <!-- Options Grid -->
                     <div id="quiz-options" class="grid grid-cols-2 gap-3"></div>
-                    <div id="quiz-feedback" class="hidden p-4 rounded-xl text-center font-bold text-sm"></div>
+                    <div id="quiz-feedback" class="hidden p-4 rounded-xl text-center font-bold text-sm transition-all"></div>
                 </div>
 
+                <!-- Quiz Completion View -->
                 <div id="quiz-complete-view" class="hidden text-center py-8 space-y-4">
                     <div class="text-6xl">🎉</div>
                     <h3 class="text-2xl font-bold font-title text-slate-800">Tahniah! Anda Telah Selesai!</h3>
-                    <p class="text-slate-600">Markah akhir anda ialah <span id="final-score" class="font-bold text-emerald-600 text-xl">0</span> / 50</p>
+                    <p class="text-slate-600">Markah akhir anda untuk mod ini ialah <span id="final-score" class="font-bold text-emerald-600 text-2xl">0</span> / 50</p>
                     <button onclick="resetQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl transition-colors shadow-md">
                         🔄 Main Semula Kuiz
                     </button>
@@ -653,18 +684,117 @@
             confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
         }
 
+        // ========================================================
+        // DUAL QUIZ SYSTEM LOGIC
+        // ========================================================
+        let currentQuizMode = 'matching'; // 'matching' or 'fillblank'
         let quizQuestions = [];
         let currentQuizIndex = 0;
         let quizScore = 0;
 
+        const matchingQuestionsData = [
+            { audioKey: "pa", jawi: "ڤ", correct: "Pa (p)", options: ["Pa (p)", "Nun (n)", "Ca (c)", "Ba (b)"] },
+            { audioKey: "ca", jawi: "چ", correct: "Ca (c)", options: ["Jim (j)", "Ca (c)", "Ha (h)", "Kha (kh)"] },
+            { audioKey: "jim", jawi: "ج", correct: "Jim (j)", options: ["Ca (c)", "Jim (j)", "Ya (y)", "Nga (ng)"] },
+            { audioKey: "sin", jawi: "س", correct: "Sin (s)", options: ["Shin (sh)", "Sin (s)", "Lam (l)", "Ta (t)"] },
+            { audioKey: "nun", jawi: "ن", correct: "Nun (n)", options: ["Nun (n)", "Ta (t)", "Ya (y)", "Ba (b)"] }
+        ];
+
+        const fillBlankQuestionsData = [
+            {
+                wordAudioKey: "pandu",
+                missingAudioKey: "nun",
+                displayJawi: "ڤ _ د و",
+                hintRumi: "PANDU",
+                correctLetter: "ن",
+                correctAudioKey: "nun",
+                options: [
+                    { jawi: "ن", audioKey: "nun" },
+                    { jawi: "ب", audioKey: "pa" },
+                    { jawi: "ت", audioKey: "ta" },
+                    { jawi: "ي", audioKey: "ya" }
+                ]
+            },
+            {
+                wordAudioKey: "cermat",
+                missingAudioKey: "ra",
+                displayJawi: "چ _ م ت",
+                hintRumi: "CERMAT",
+                correctLetter: "ر",
+                correctAudioKey: "ra",
+                options: [
+                    { jawi: "ز", audioKey: "ra" },
+                    { jawi: "ر", audioKey: "ra" },
+                    { jawi: "د", audioKey: "dal" },
+                    { jawi: "و", audioKey: "wau" }
+                ]
+            },
+            {
+                wordAudioKey: "jiwa",
+                missingAudioKey: "ya",
+                displayJawi: "ج _ و ا",
+                hintRumi: "JIWA",
+                correctLetter: "ي",
+                correctAudioKey: "ya",
+                options: [
+                    { jawi: "ا", audioKey: "alif" },
+                    { jawi: "ن", audioKey: "nun" },
+                    { jawi: "ي", audioKey: "ya" },
+                    { jawi: "ب", audioKey: "pa" }
+                ]
+            },
+            {
+                wordAudioKey: "selamat",
+                missingAudioKey: "lam",
+                displayJawi: "س _ ا م ت",
+                hintRumi: "SELAMAT",
+                correctLetter: "ل",
+                correctAudioKey: "lam",
+                options: [
+                    { jawi: "ل", audioKey: "lam" },
+                    { jawi: "ا", audioKey: "alif" },
+                    { jawi: "ك", audioKey: "ca" },
+                    { jawi: "م", audioKey: "mim" }
+                ]
+            },
+            {
+                wordAudioKey: "pandu",
+                missingAudioKey: "dal",
+                displayJawi: "ڤ ن _ و",
+                hintRumi: "PANDU",
+                correctLetter: "د",
+                correctAudioKey: "dal",
+                options: [
+                    { jawi: "ر", audioKey: "ra" },
+                    { jawi: "د", audioKey: "dal" },
+                    { jawi: "و", audioKey: "wau" },
+                    { audioKey: "jim", jawi: "ج" }
+                ]
+            }
+        ];
+
+        function switchQuizMode(mode) {
+            currentQuizMode = mode;
+            
+            document.getElementById('btn-mode-matching').classList.remove('quiz-mode-active');
+            document.getElementById('btn-mode-fillblank').classList.remove('quiz-mode-active');
+            
+            if (mode === 'matching') {
+                document.getElementById('btn-mode-matching').classList.add('quiz-mode-active');
+            } else {
+                document.getElementById('btn-mode-fillblank').classList.add('quiz-mode-active');
+            }
+
+            initQuiz();
+        }
+
         function initQuiz() {
-            quizQuestions = [
-                { audioKey: "pa", jawi: "ڤ", correct: "Pa (p)", options: ["Pa (p)", "Nun (n)", "Ca (c)", "Ba (b)"] },
-                { audioKey: "ca", jawi: "چ", correct: "Ca (c)", options: ["Jim (j)", "Ca (c)", "Ha (h)", "Kha (kh)"] },
-                { audioKey: "jim", jawi: "ج", correct: "Jim (j)", options: ["Ca (c)", "Jim (j)", "Ya (y)", "Nga (ng)"] },
-                { audioKey: "sin", jawi: "س", correct: "Sin (s)", options: ["Shin (sh)", "Sin (s)", "Lam (l)", "Ta (t)"] },
-                { audioKey: "nun", jawi: "ن", correct: "Nun (n)", options: ["Nun (n)", "Ta (t)", "Ya (y)", "Ba (b)"] }
-            ];
+            if (currentQuizMode === 'matching') {
+                quizQuestions = [...matchingQuestionsData];
+            } else {
+                quizQuestions = [...fillBlankQuestionsData];
+            }
+
             currentQuizIndex = 0;
             quizScore = 0;
             document.getElementById('quiz-score').innerText = quizScore;
@@ -687,23 +817,54 @@
 
             const q = quizQuestions[currentQuizIndex];
             document.getElementById('quiz-question-number').innerText = `Soalan ${currentQuizIndex + 1} daripada ${quizQuestions.length}`;
-            document.getElementById('quiz-jawi-display').innerText = q.jawi;
-
+            
+            const hintContainer = document.getElementById('quiz-hint-container');
             const optionsContainer = document.getElementById('quiz-options');
             optionsContainer.innerHTML = '';
 
-            q.options.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = "p-4 bg-slate-50 hover:bg-emerald-50 border-2 border-slate-200 hover:border-emerald-400 font-bold rounded-2xl text-slate-700 hover:text-emerald-800 transition-all text-center";
-                btn.innerText = opt;
-                btn.onclick = () => checkQuizAnswer(opt, q.correct);
-                optionsContainer.appendChild(btn);
-            });
+            if (currentQuizMode === 'matching') {
+                // MOD 1
+                hintContainer.classList.add('hidden');
+                document.getElementById('quiz-question-instruction').innerText = "Apakah sebutan atau padanan Rumi bagi huruf Jawi di bawah?";
+                document.getElementById('quiz-jawi-display').innerText = q.jawi;
+
+                q.options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = "p-4 bg-slate-50 hover:bg-emerald-50 border-2 border-slate-200 hover:border-emerald-400 font-bold rounded-2xl text-slate-700 hover:text-emerald-800 transition-all text-center";
+                    btn.innerText = opt;
+                    btn.onclick = () => checkQuizAnswer(opt, q.correct);
+                    optionsContainer.appendChild(btn);
+                });
+            } else {
+                // MOD 2: ISI TEMPAT KOSONG
+                hintContainer.classList.remove('hidden');
+                document.getElementById('quiz-hint-text').innerText = `Petunjuk Perkataan: ${q.hintRumi}`;
+                document.getElementById('quiz-question-instruction').innerText = "Pilih huruf Jawi yang sesuai untuk melengkapkan tempat kosong:";
+                document.getElementById('quiz-jawi-display').innerText = q.displayJawi;
+
+                q.options.forEach(optObj => {
+                    const btn = document.createElement('button');
+                    btn.className = "p-4 bg-slate-50 hover:bg-emerald-50 border-2 border-slate-200 hover:border-emerald-400 font-bold rounded-2xl text-slate-800 hover:text-emerald-800 transition-all text-center flex flex-col items-center justify-center gap-1 group";
+                    btn.innerHTML = `
+                        <span class="text-4xl font-jawi font-bold text-emerald-800 group-hover:scale-110 transition-transform">${optObj.jawi}</span>
+                        <span class="text-xs text-slate-400">🎵 Tekan & Sebut</span>
+                    `;
+                    btn.onclick = () => {
+                        playAudioByKey(optObj.audioKey, optObj.jawi, btn);
+                        checkQuizAnswer(optObj.jawi, q.correctLetter);
+                    };
+                    optionsContainer.appendChild(btn);
+                });
+            }
         }
 
-        function speakQuizLetter() {
+        function speakQuizItem() {
             const q = quizQuestions[currentQuizIndex];
-            playAudioByKey(q.audioKey, q.correct);
+            if (currentQuizMode === 'matching') {
+                playAudioByKey(q.audioKey, q.correct);
+            } else {
+                playAudioByKey(q.wordAudioKey, q.hintRumi);
+            }
         }
 
         function checkQuizAnswer(selected, correct) {
@@ -730,6 +891,9 @@
             initQuiz();
         }
 
+        // ========================================================
+        // POSTER GENERATOR LOGIC
+        // ========================================================
         const posterThemes = [
             "from-amber-50 via-orange-50 to-yellow-100 border-amber-300",
             "from-emerald-50 via-teal-50 to-cyan-100 border-emerald-300",
