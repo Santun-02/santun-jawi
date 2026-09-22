@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ms" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seni Bahasa Jawi Tahun 6: Pandu Cermat Jiwa Selamat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f0fdf4;
+        }
+        .font-jawi {
+            font-family: 'Amiri', serif;
+        }
+        .font-title {
+            font-family: 'Fredoka', cursive;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #059669;
+        }
+        .tab-active {
+            background-color: #059669;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        .playing-audio {
+            animation: pulse-ring 1.2s infinite;
+            border-color: #059669 !important;
+            background-color: #ecfdf5 !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <header class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-3">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="p-2 bg-white/20 rounded-2xl backdrop-blur-md">
+                        <span class="text-3xl font-jawi font-bold text-yellow-300">ڤ</span>
+                    </div>
+                    <div>
+                        <span class="bg-yellow-400 text-emerald-950 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">KSSR Bahasa Melayu SK Tahun 6</span>
+                        <h1 class="text-xl md:text-2xl font-bold font-title tracking-wide">Seni Bahasa: Pandu Cermat Jiwa Selamat</h1>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex flex-wrap justify-center gap-1.5 bg-emerald-800/40 p-1.5 rounded-2xl backdrop-blur-sm">
+                    <button onclick="switchTab('sk-sp')" id="tab-sk-sp" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10">
+                        📚 DSKP & Nota
+                    </button>
+                    <button onclick="switchTab('pembelajaran')" id="tab-pembelajaran" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 tab-active">
+                        🔍 Cerakin Huruf
+                    </button>
+                    <button onclick="switchTab('latihan-menulis')" id="tab-latihan-menulis" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10">
+                        ✍️ Kanvas Latihan
+                    </button>
+                    <button onclick="switchTab('kuiz')" id="tab-kuiz" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10">
+                        🎯 Kuiz Interaktif
+                    </button>
+                    <button onclick="switchTab('poster')" id="tab-poster" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10">
+                        🎨 Poster Digital
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- TAB 1: DSKP & NOTA -->
+        <section id="sec-sk-sp" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
+                    <h2 class="text-2xl font-bold font-title flex items-center gap-2">
+                        <span>📋</span> Standard Kandungan & Standard Pembelajaran
+                    </h2>
+                    <p class="text-blue-100 text-sm mt-1">Dokumen Standard Kurikulum dan Pentaksiran (DSKP) KSSR Bahasa Melayu Tahun 6</p>
+                </div>
+
+                <div class="p-6 grid md:grid-cols-12 gap-6">
+                    <div class="md:col-span-5 bg-blue-50/70 border border-blue-200 rounded-2xl p-5">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-md">4.4</span>
+                            <h3 class="font-bold text-blue-900 text-lg">STANDARD KANDUNGAN</h3>
+                        </div>
+                        <p class="text-slate-700 leading-relaxed font-medium">
+                            Mengaplikasikan, menghayati dan menghasilkan unsur keindahan dalam seni tulisan Jawi.
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-7 bg-emerald-50/70 border border-emerald-200 rounded-2xl p-5 space-y-4">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="bg-emerald-600 text-white text-xs font-bold px-2 py-1 rounded-md">4.4.1 & 4.4.2</span>
+                            <h3 class="font-bold text-emerald-900 text-lg">STANDARD PEMBELAJARAN</h3>
+                        </div>
+                        <div class="border-b border-emerald-200 pb-3">
+                            <span class="inline-block bg-emerald-200 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded mb-1">4.4.1</span>
+                            <p class="text-slate-700 font-medium">Mengenal, mengecam, menyebut, dan menulis huruf tunggal yang ditulis mengikut tulisan Jawi dalam kata-kata hikmat dan mempersembahkannya.</p>
+                        </div>
+                        <div>
+                            <span class="inline-block bg-emerald-200 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded mb-1">4.4.2</span>
+                            <p class="text-slate-700 font-medium">Mempersembahkan keindahan seni tulisan Jawi melalui kata-kata hikmat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 rounded-3xl p-6 border border-amber-200 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-3xl">👨‍🏫</span>
+                    <div>
+                        <h3 class="font-bold text-amber-900 text-xl font-title">Nota Panduan Audio</h3>
+                        <p class="text-xs text-amber-700">Aplikasi sedia terhubung secara automatik dengan fail MP3 tempatan anda</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4 text-sm">
+                    <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-xs">
+                        <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">📌 Bimbingan Murid</h4>
+                        <p class="text-slate-600">Bimbing murid mengenal, mengecam, dan menyebut huruf tunggal tulisan Jawi. Sentuh mana-mana huruf untuk mendengar sebutan MP3.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-xs">
+                        <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">📁 Nama Fail MP3</h4>
+                        <p class="text-slate-600">Audio menggunakan nama fail terus seperti <code>pa.mp3</code>, <code>nun.mp3</code>, <code>dal.mp3</code>, <code>pandu.mp3</code>, dan lain-lain di direktori projek anda.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-xs">
+                        <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">🚀 KBAT & EMK</h4>
+                        <p class="text-slate-600"><strong>KBAT:</strong> Mengaplikasikan - Menunjukkan keindahan seni Jawi.<br><strong>EMK:</strong> Bahasa, Nilai Murni (Keselamatan Jalan Raya).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: PEMBELAJARAN & CERAKIN HURUF -->
+        <section id="sec-pembelajaran" class="tab-content space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm text-center relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-emerald-100 rounded-full blur-2xl opacity-50"></div>
+                <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Kata-Kata Hikmat</span>
+                <h2 class="text-3xl sm:text-4xl font-bold font-jawi text-slate-800 mb-2">ڤندو چرمت جيوا سلامت</h2>
+                <p class="text-lg text-emerald-700 font-bold font-title">"Pandu Cermat Jiwa Selamat"</p>
+                <p class="text-sm text-slate-500 max-w-2xl mx-auto mt-2">
+                    Tekan setiap perkataan atau huruf di bawah untuk memainkan rakaman MP3!
+                </p>
+            </div>
+
+            <!-- Word Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="selectWord('pandu')" id="wbtn-pandu" class="word-card bg-white p-5 rounded-2xl border-2 border-emerald-500 shadow-md hover:shadow-lg transition-all text-center group">
+                    <span class="block text-3xl sm:text-4xl font-jawi font-bold text-emerald-700 group-hover:scale-110 transition-transform">ڤندو</span>
+                    <span class="block text-sm font-bold text-slate-600 mt-2">1. Pandu</span>
+                    <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full inline-block mt-1">4 Huruf Tunggal</span>
+                </button>
+                <button onclick="selectWord('cermat')" id="wbtn-cermat" class="word-card bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs hover:border-amber-400 hover:shadow-lg transition-all text-center group">
+                    <span class="block text-3xl sm:text-4xl font-jawi font-bold text-slate-800 group-hover:scale-110 transition-transform">چرمت</span>
+                    <span class="block text-sm font-bold text-slate-600 mt-2">2. Cermat</span>
+                    <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full inline-block mt-1">4 Huruf Tunggal</span>
+                </button>
+                <button onclick="selectWord('jiwa')" id="wbtn-jiwa" class="word-card bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs hover:border-purple-400 hover:shadow-lg transition-all text-center group">
+                    <span class="block text-3xl sm:text-4xl font-jawi font-bold text-slate-800 group-hover:scale-110 transition-transform">جيوا</span>
+                    <span class="block text-sm font-bold text-slate-600 mt-2">3. Jiwa</span>
+                    <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full inline-block mt-1">4 Huruf Tunggal</span>
+                </button>
+                <button onclick="selectWord('selamat')" id="wbtn-selamat" class="word-card bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs hover:border-rose-400 hover:shadow-lg transition-all text-center group">
+                    <span class="block text-3xl sm:text-4xl font-jawi font-bold text-slate-800 group-hover:scale-110 transition-transform">سلامت</span>
+                    <span class="block text-sm font-bold text-slate-600 mt-2">4. Selamat</span>
+                    <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full inline-block mt-1">5 Huruf Tunggal</span>
+                </button>
+            </div>
+
+            <!-- Detail Breakdown Display Area -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex flex-col sm:flex-row items-center justify-between border-b border-slate-100 pb-4 gap-3">
+                    <div>
+                        <h3 id="current-word-title" class="text-2xl font-bold font-title text-emerald-800">Perkataan: Pandu (ڤندو)</h3>
+                        <p class="text-xs text-slate-500">Tekan kad huruf di bawah untuk memainkan sebutan MP3!</p>
+                    </div>
+                    <button onclick="playAudioByKey(currentActiveWordKey)" id="btn-play-word-audio" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-xl transition-colors shadow-xs">
+                        <span>🔊</span> Sebut Perkataan
+                    </button>
+                </div>
+
+                <div id="letters-container" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4" dir="rtl">
+                    <!-- Dynamic Letter Cards -->
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-start gap-3 text-xs sm:text-sm text-slate-600">
+                    <span class="text-xl">🎵</span>
+                    <div>
+                        <strong>Audio MP3 Terusan:</strong> Setiap butang memanggil fail MP3 secara terus (seperti <code>pa.mp3</code>, <code>nun.mp3</code>, <code>pandu.mp3</code>).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: KANVAS LATIHAN MENULIS -->
+        <section id="sec-latihan-menulis" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold font-title text-slate-800">✍️ Kanvas Latihan Menulis Huruf Jawi</h2>
+                        <p class="text-xs text-slate-500">Latih jemari anda melukis dan menulis huruf Jawi tunggal dengan betul.</p>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <label for="practice-letter-select" class="text-sm font-semibold text-slate-700">Pilih Huruf:</label>
+                        <select id="practice-letter-select" onchange="changePracticeLetter()" class="bg-emerald-50 border border-emerald-300 rounded-xl px-3 py-2 text-base font-bold font-jawi text-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-6 items-center">
+                    <div class="md:col-span-4 bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-2xl border border-emerald-200 text-center flex flex-col justify-between h-full">
+                        <div>
+                            <span class="text-xs font-bold uppercase text-emerald-600 tracking-wider">Muka Rujukan</span>
+                            <div id="canvas-reference-jawi" class="text-8xl sm:text-9xl font-jawi font-bold text-emerald-800 my-4">
+                                ڤ
+                            </div>
+                            <p id="canvas-reference-rumi" class="text-lg font-bold text-slate-700">Pa (p)</p>
+                            <p id="canvas-reference-word" class="text-xs text-slate-500 mt-1">Daripada perkataan "Pandu"</p>
+                        </div>
+                        <button onclick="playSelectedPracticeLetterAudio()" class="mt-6 bg-white border border-emerald-300 hover:bg-emerald-100 text-emerald-800 text-sm font-semibold py-2 px-4 rounded-xl transition-all shadow-xs flex items-center justify-center gap-2">
+                            <span>🔊</span> Main Audio Huruf
+                        </button>
+                    </div>
+
+                    <div class="md:col-span-8 flex flex-col items-center">
+                        <div class="relative w-full max-w-lg aspect-square bg-amber-50/40 border-2 border-dashed border-slate-300 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                            <div id="canvas-guide" class="absolute inset-0 flex items-center justify-center text-slate-200 font-jawi text-[180px] pointer-events-none select-none opacity-40">
+                                ڤ
+                            </div>
+                            <canvas id="writing-canvas" class="w-full h-full cursor-crosshair relative z-10 touch-none"></canvas>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-center gap-3 mt-4 w-full max-w-lg">
+                            <div class="flex items-center gap-1 bg-slate-100 p-1.5 rounded-xl">
+                                <button onclick="setPenColor('#059669')" class="w-7 h-7 rounded-full bg-emerald-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-emerald-400"></button>
+                                <button onclick="setPenColor('#2563eb')" class="w-7 h-7 rounded-full bg-blue-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-blue-400"></button>
+                                <button onclick="setPenColor('#dc2626')" class="w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-red-400"></button>
+                                <button onclick="setPenColor('#09090b')" class="w-7 h-7 rounded-full bg-zinc-900 border-2 border-white shadow-xs focus:ring-2 focus:ring-zinc-400"></button>
+                            </div>
+
+                            <button onclick="clearCanvas()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-semibold rounded-xl transition-colors">
+                                🧹 Padam / Semula
+                            </button>
+                            <button onclick="saveCanvasDrawing()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-xs">
+                                ✨ Simpan Tulisan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: KUIZ INTERAKTIF -->
+        <section id="sec-kuiz" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm max-w-3xl mx-auto">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold font-title text-slate-800">🎯 Kuiz Mengecam Huruf Jawi</h2>
+                        <p class="text-xs text-slate-500">Uji kefahaman anda padankan huruf Jawi dengan sebutan Rumi!</p>
+                    </div>
+                    <div class="bg-amber-100 text-amber-900 px-3 py-1 rounded-xl font-bold text-sm">
+                        Markah: <span id="quiz-score" class="text-emerald-700 text-lg">0</span>
+                    </div>
+                </div>
+
+                <div id="quiz-card" class="space-y-6">
+                    <div class="text-center py-6 bg-slate-50 rounded-2xl border border-slate-200">
+                        <span id="quiz-question-number" class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Soalan 1 daripada 5</span>
+                        <h3 class="text-lg font-bold text-slate-700 mb-4">Apakah sebutan atau padanan Rumi bagi huruf Jawi di bawah?</h3>
+                        <div id="quiz-jawi-display" class="text-8xl font-jawi font-bold text-emerald-700 mb-2">
+                            ڤ
+                        </div>
+                        <button onclick="speakQuizLetter()" class="text-xs text-emerald-600 hover:underline font-semibold inline-flex items-center gap-1">
+                            🔊 Dengarkan Audio MP3
+                        </button>
+                    </div>
+
+                    <div id="quiz-options" class="grid grid-cols-2 gap-3"></div>
+                    <div id="quiz-feedback" class="hidden p-4 rounded-xl text-center font-bold text-sm"></div>
+                </div>
+
+                <div id="quiz-complete-view" class="hidden text-center py-8 space-y-4">
+                    <div class="text-6xl">🎉</div>
+                    <h3 class="text-2xl font-bold font-title text-slate-800">Tahniah! Anda Telah Selesai!</h3>
+                    <p class="text-slate-600">Markah akhir anda ialah <span id="final-score" class="font-bold text-emerald-600 text-xl">0</span> / 50</p>
+                    <button onclick="resetQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl transition-colors shadow-md">
+                        🔄 Main Semula Kuiz
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: POSTER DIGITAL -->
+        <section id="sec-poster" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold font-title text-slate-800">🎨 Persembahan Poster Digital</h2>
+                        <p class="text-xs text-slate-500">Hias dan hasilkan kad seni Jawi kata-kata hikmat anda sendiri!</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="randomizePosterTheme()" class="px-4 py-2 bg-indigo-50 text-indigo-700 border border-indigo-200 hover:bg-indigo-100 text-sm font-semibold rounded-xl transition-all">
+                            🎲 Tukar Tema Warna
+                        </button>
+                        <button onclick="printPoster()" class="px-4 py-2 bg-emerald-600 text-white hover:bg-emerald-700 text-sm font-semibold rounded-xl transition-all shadow-xs flex items-center gap-1">
+                            🖨️ Cetak / Simpan Kad
+                        </button>
+                    </div>
+                </div>
+
+                <div id="printable-poster" class="max-w-2xl mx-auto p-8 sm:p-12 rounded-3xl border-4 border-amber-300 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-100 shadow-xl text-center space-y-6 relative overflow-hidden transition-all duration-300">
+                    <div class="absolute top-3 left-3 text-2xl text-amber-400">✨</div>
+                    <div class="absolute top-3 right-3 text-2xl text-amber-400">✨</div>
+                    <div class="absolute bottom-3 left-3 text-2xl text-amber-400">🌿</div>
+                    <div class="absolute bottom-3 right-3 text-2xl text-amber-400">🌿</div>
+
+                    <span class="inline-block px-4 py-1 bg-amber-200/80 text-amber-900 font-bold text-xs uppercase tracking-widest rounded-full">Seni Bahasa Jawi SK Tahun 6</span>
+
+                    <div class="py-4 space-y-2">
+                        <h3 id="poster-jawi-text" class="text-4xl sm:text-6xl font-jawi font-bold text-slate-800 leading-relaxed">
+                            ڤندو چرمت جيوا سلامت
+                        </h3>
+                        <p id="poster-rumi-text" class="text-2xl font-bold font-title text-emerald-800 tracking-wide">
+                            "Pandu Cermat Jiwa Selamat"
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-amber-200/60">
+                        <p class="text-xs font-semibold text-slate-500 mb-3">HURUF-HURUF TUNGGAL:</p>
+                        <div id="poster-letter-tags" class="flex flex-wrap justify-center gap-2 dir-rtl"></div>
+                    </div>
+
+                    <div class="pt-6 text-xs text-slate-400 flex justify-between items-center">
+                        <span>Dihasilkan oleh: <strong id="poster-student-name" class="text-slate-600">Murid Tahun 6 SK</strong></span>
+                        <span>Standard Pembelajaran 4.4.2</span>
+                    </div>
+                </div>
+
+                <div class="max-w-2xl mx-auto mt-6 bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center gap-4">
+                    <label class="text-xs font-bold text-slate-600 whitespace-nowrap">Nama Murid / Penulis:</label>
+                    <input type="text" id="input-student-name" placeholder="Masukkan nama anda..." oninput="updatePosterName()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>Aplikasi Interaktif Seni Bahasa Jawi Tahun 6 • Berdasarkan Buku Teks Bahasa Melayu SK (KSSR Semakan)</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========================================================
+        // DIRECT MP3 AUDIO MAPPING
+        // ========================================================
+        const AUDIO_FILES = {
+            // Huruf Single
+            'pa': 'pa.mp3',
+            'nun': 'nun.mp3',
+            'dal': 'dal.mp3',
+            'wau': 'wau.mp3',
+            'ca': 'ca.mp3',
+            'ra': 'ra.mp3',
+            'mim': 'mim.mp3',
+            'ta': 'ta.mp3',
+            'jim': 'jim.mp3',
+            'ya': 'ya.mp3',
+            'alif': 'alif.mp3',
+            'sin': 'sin.mp3',
+            'lam': 'lam.mp3',
+
+            // Perkataan
+            'pandu': 'pandu.mp3',
+            'cermat': 'cermat.mp3',
+            'jiwa': 'jiwa.mp3',
+            'selamat': 'selamat.mp3'
+        };
+
+        // Jawidata Mapping
+        const jawiData = {
+            pandu: {
+                key: "pandu",
+                audioKey: "pandu",
+                rumi: "Pandu",
+                jawi: "ڤندو",
+                letters: [
+                    { audioKey: "pa", jawi: "ڤ", name: "Pa", rumi: "p" },
+                    { audioKey: "nun", jawi: "ن", name: "Nun", rumi: "n" },
+                    { audioKey: "dal", jawi: "د", name: "Dal", rumi: "d" },
+                    { audioKey: "wau", jawi: "و", name: "Wau", rumi: "u" }
+                ]
+            },
+            cermat: {
+                key: "cermat",
+                audioKey: "cermat",
+                rumi: "Cermat",
+                jawi: "چرمت",
+                letters: [
+                    { audioKey: "ca", jawi: "چ", name: "Ca", rumi: "c" },
+                    { audioKey: "ra", jawi: "ر", name: "Ra", rumi: "r" },
+                    { audioKey: "mim", jawi: "م", name: "Mim", rumi: "m" },
+                    { audioKey: "ta", jawi: "ت", name: "Ta", rumi: "t" }
+                ]
+            },
+            jiwa: {
+                key: "jiwa",
+                audioKey: "jiwa",
+                rumi: "Jiwa",
+                jawi: "جيوا",
+                letters: [
+                    { audioKey: "jim", jawi: "ج", name: "Jim", rumi: "j" },
+                    { audioKey: "ya", jawi: "ي", name: "Ya", rumi: "i" },
+                    { audioKey: "wau", jawi: "و", name: "Wau", rumi: "w" },
+                    { audioKey: "alif", jawi: "ا", name: "Alif", rumi: "a" }
+                ]
+            },
+            selamat: {
+                key: "selamat",
+                audioKey: "selamat",
+                rumi: "Selamat",
+                jawi: "سلامت",
+                letters: [
+                    { audioKey: "sin", jawi: "س", name: "Sin", rumi: "s" },
+                    { audioKey: "lam", jawi: "ل", name: "Lam", rumi: "l" },
+                    { audioKey: "alif", jawi: "ا", name: "Alif", rumi: "a" },
+                    { audioKey: "mim", jawi: "م", name: "Mim", rumi: "m" },
+                    { audioKey: "ta", jawi: "ت", name: "Ta", rumi: "t" }
+                ]
+            }
+        };
+
+        let currentActiveWordKey = 'pandu';
+        let drawingCanvas, canvasCtx, isDrawing = false;
+        let activePenColor = '#059669';
+        let activeAudioElement = null;
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('hover:bg-white/10');
+            });
+
+            document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.add('tab-active');
+
+            if (tabId === 'latihan-menulis') {
+                setTimeout(initDrawingCanvas, 100);
+            }
+        }
+
+        // ========================================================
+        // DIRECT MP3 AUDIO PLAYER
+        // ========================================================
+        function playAudioByKey(audioKey, fallbackText = '', visualElement = null) {
+            if (activeAudioElement) {
+                activeAudioElement.pause();
+                activeAudioElement = null;
+            }
+
+            document.querySelectorAll('.playing-audio').forEach(el => el.classList.remove('playing-audio'));
+
+            if (visualElement) {
+                visualElement.classList.add('playing-audio');
+            }
+
+            const mp3FileName = AUDIO_FILES[audioKey] || `${audioKey}.mp3`;
+            const audio = new Audio(mp3FileName);
+            activeAudioElement = audio;
+
+            audio.play().then(() => {
+                audio.onended = () => {
+                    if (visualElement) visualElement.classList.remove('playing-audio');
+                };
+            }).catch(err => {
+                console.warn(`Fail MP3 (${mp3FileName}) tidak dapat dimainkan.`, err);
+                if (visualElement) visualElement.classList.remove('playing-audio');
+            });
+        }
+
+        function selectWord(wordKey) {
+            currentActiveWordKey = wordKey;
+            const data = jawiData[wordKey];
+
+            document.querySelectorAll('.word-card').forEach(card => {
+                card.classList.remove('border-emerald-500', 'shadow-md');
+                card.classList.add('border-slate-200');
+            });
+            const activeCard = document.getElementById(`wbtn-${wordKey}`);
+            activeCard.classList.add('border-emerald-500', 'shadow-md');
+            activeCard.classList.remove('border-slate-200');
+
+            document.getElementById('current-word-title').innerText = `Perkataan: ${data.rumi} (${data.jawi})`;
+
+            const container = document.getElementById('letters-container');
+            container.innerHTML = '';
+
+            data.letters.forEach((item, idx) => {
+                const card = document.createElement('button');
+                card.onclick = () => playAudioByKey(item.audioKey, item.name, card);
+                card.className = "bg-emerald-50/50 hover:bg-emerald-100 border border-emerald-200 rounded-2xl p-4 flex flex-col items-center justify-center transition-all transform hover:-translate-y-1 shadow-xs group cursor-pointer relative";
+
+                card.innerHTML = `
+                    <span class="text-xs text-slate-400 font-bold mb-1">Huruf ${idx + 1}</span>
+                    <span class="text-5xl font-jawi font-bold text-emerald-800 group-hover:scale-110 transition-transform mb-2">${item.jawi}</span>
+                    <span class="text-sm font-bold text-slate-700">${item.name}</span>
+                    <span class="text-xs text-emerald-600 bg-white px-2 py-0.5 rounded-md mt-1 border border-emerald-100">Rumi: "${item.rumi}"</span>
+                    <span class="absolute top-2 right-2 text-xs" title="${AUDIO_FILES[item.audioKey]}">🎵</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function populatePracticeLetterDropdown() {
+            const select = document.getElementById('practice-letter-select');
+            select.innerHTML = '';
+
+            Object.values(jawiData).forEach(wordObj => {
+                wordObj.letters.forEach(letter => {
+                    const opt = document.createElement('option');
+                    opt.value = JSON.stringify(letter);
+                    opt.innerText = `${letter.jawi} (${letter.name})`;
+                    select.appendChild(opt);
+                });
+            });
+            changePracticeLetter();
+        }
+
+        function changePracticeLetter() {
+            const select = document.getElementById('practice-letter-select');
+            const letterObj = JSON.parse(select.value);
+
+            document.getElementById('canvas-reference-jawi').innerText = letterObj.jawi;
+            document.getElementById('canvas-guide').innerText = letterObj.jawi;
+            document.getElementById('canvas-reference-rumi').innerText = `${letterObj.name} (${letterObj.rumi})`;
+
+            clearCanvas();
+        }
+
+        function playSelectedPracticeLetterAudio() {
+            const select = document.getElementById('practice-letter-select');
+            const letterObj = JSON.parse(select.value);
+            playAudioByKey(letterObj.audioKey, letterObj.name);
+        }
+
+        function initDrawingCanvas() {
+            drawingCanvas = document.getElementById('writing-canvas');
+            if (!drawingCanvas) return;
+
+            const rect = drawingCanvas.parentElement.getBoundingClientRect();
+            drawingCanvas.width = rect.width;
+            drawingCanvas.height = rect.height;
+
+            canvasCtx = drawingCanvas.getContext('2d');
+            canvasCtx.lineWidth = 10;
+            canvasCtx.lineCap = 'round';
+            canvasCtx.lineJoin = 'round';
+            canvasCtx.strokeStyle = activePenColor;
+
+            drawingCanvas.onmousedown = startDrawing;
+            drawingCanvas.onmousemove = draw;
+            drawingCanvas.onmouseup = stopDrawing;
+            drawingCanvas.onmouseleave = stopDrawing;
+
+            drawingCanvas.ontouchstart = (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent("mousedown", {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                drawingCanvas.dispatchEvent(mouseEvent);
+            };
+
+            drawingCanvas.ontouchmove = (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent("mousemove", {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                drawingCanvas.dispatchEvent(mouseEvent);
+            };
+
+            drawingCanvas.ontouchend = () => stopDrawing();
+        }
+
+        function getCanvasCoordinates(e) {
+            const rect = drawingCanvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const coords = getCanvasCoordinates(e);
+            canvasCtx.beginPath();
+            canvasCtx.moveTo(coords.x, coords.y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const coords = getCanvasCoordinates(e);
+            canvasCtx.lineTo(coords.x, coords.y);
+            canvasCtx.stroke();
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        function clearCanvas() {
+            if (canvasCtx && drawingCanvas) {
+                canvasCtx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+            }
+        }
+
+        function setPenColor(color) {
+            activePenColor = color;
+            if (canvasCtx) {
+                canvasCtx.strokeStyle = color;
+            }
+        }
+
+        function saveCanvasDrawing() {
+            confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+        }
+
+        let quizQuestions = [];
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+
+        function initQuiz() {
+            quizQuestions = [
+                { audioKey: "pa", jawi: "ڤ", correct: "Pa (p)", options: ["Pa (p)", "Nun (n)", "Ca (c)", "Ba (b)"] },
+                { audioKey: "ca", jawi: "چ", correct: "Ca (c)", options: ["Jim (j)", "Ca (c)", "Ha (h)", "Kha (kh)"] },
+                { audioKey: "jim", jawi: "ج", correct: "Jim (j)", options: ["Ca (c)", "Jim (j)", "Ya (y)", "Nga (ng)"] },
+                { audioKey: "sin", jawi: "س", correct: "Sin (s)", options: ["Shin (sh)", "Sin (s)", "Lam (l)", "Ta (t)"] },
+                { audioKey: "nun", jawi: "ن", correct: "Nun (n)", options: ["Nun (n)", "Ta (t)", "Ya (y)", "Ba (b)"] }
+            ];
+            currentQuizIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-score').innerText = quizScore;
+            document.getElementById('quiz-complete-view').classList.add('hidden');
+            document.getElementById('quiz-card').classList.remove('hidden');
+            loadQuizQuestion();
+        }
+
+        function loadQuizQuestion() {
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.add('hidden');
+
+            if (currentQuizIndex >= quizQuestions.length) {
+                document.getElementById('quiz-card').classList.add('hidden');
+                document.getElementById('quiz-complete-view').classList.remove('hidden');
+                document.getElementById('final-score').innerText = quizScore;
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                return;
+            }
+
+            const q = quizQuestions[currentQuizIndex];
+            document.getElementById('quiz-question-number').innerText = `Soalan ${currentQuizIndex + 1} daripada ${quizQuestions.length}`;
+            document.getElementById('quiz-jawi-display').innerText = q.jawi;
+
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "p-4 bg-slate-50 hover:bg-emerald-50 border-2 border-slate-200 hover:border-emerald-400 font-bold rounded-2xl text-slate-700 hover:text-emerald-800 transition-all text-center";
+                btn.innerText = opt;
+                btn.onclick = () => checkQuizAnswer(opt, q.correct);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function speakQuizLetter() {
+            const q = quizQuestions[currentQuizIndex];
+            playAudioByKey(q.audioKey, q.correct);
+        }
+
+        function checkQuizAnswer(selected, correct) {
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-red-100', 'text-red-800');
+
+            if (selected === correct) {
+                quizScore += 10;
+                document.getElementById('quiz-score').innerText = quizScore;
+                feedback.classList.add('bg-emerald-100', 'text-emerald-800');
+                feedback.innerText = "✅ Tahniah! Jawapan anda Betul!";
+            } else {
+                feedback.classList.add('bg-red-100', 'text-red-800');
+                feedback.innerText = `❌ Kurang tepat. Jawapan yang betul ialah: ${correct}`;
+            }
+
+            setTimeout(() => {
+                currentQuizIndex++;
+                loadQuizQuestion();
+            }, 1200);
+        }
+
+        function resetQuiz() {
+            initQuiz();
+        }
+
+        const posterThemes = [
+            "from-amber-50 via-orange-50 to-yellow-100 border-amber-300",
+            "from-emerald-50 via-teal-50 to-cyan-100 border-emerald-300",
+            "from-purple-50 via-indigo-50 to-blue-100 border-purple-300",
+            "from-rose-50 via-pink-50 to-red-100 border-rose-300"
+        ];
+        let currentThemeIndex = 0;
+
+        function initPosterTags() {
+            const container = document.getElementById('poster-letter-tags');
+            container.innerHTML = '';
+
+            Object.values(jawiData).forEach(w => {
+                w.letters.forEach(l => {
+                    const tag = document.createElement('span');
+                    tag.className = "bg-white/80 border border-amber-200 px-2.5 py-1 rounded-xl text-xs font-bold text-amber-900 shadow-2xs font-jawi text-base cursor-pointer hover:bg-amber-100";
+                    tag.innerText = `${l.jawi} (${l.name})`;
+                    tag.onclick = () => playAudioByKey(l.audioKey, l.name);
+                    container.appendChild(tag);
+                });
+            });
+        }
+
+        function updatePosterName() {
+            const val = document.getElementById('input-student-name').value;
+            document.getElementById('poster-student-name').innerText = val.trim() !== '' ? val : "Murid Tahun 6 SK";
+        }
+
+        function randomizePosterTheme() {
+            const poster = document.getElementById('printable-poster');
+            posterThemes.forEach(t => poster.classList.remove(...t.split(' ')));
+            currentThemeIndex = (currentThemeIndex + 1) % posterThemes.length;
+            const newTheme = posterThemes[currentThemeIndex];
+            poster.classList.add(...newTheme.split(' '));
+        }
+
+        function printPoster() {
+            window.print();
+        }
+
+        window.onload = function() {
+            selectWord('pandu');
+            populatePracticeLetterDropdown();
+            initQuiz();
+            initPosterTags();
+        };
+    </script>
+</body>
+</html>
