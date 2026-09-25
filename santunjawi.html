@@ -218,64 +218,91 @@
             </div>
         </section>
 
-        <!-- TAB 3: KANVAS LATIHAN MENULIS -->
-        <section id="sec-latihan-menulis" class="tab-content hidden space-y-6">
-            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
-                    <div>
-                        <h2 class="text-2xl font-bold font-title text-slate-800">✍️ Kanvas Latihan Menulis Huruf Jawi</h2>
-                        <p class="text-xs text-slate-500">Latih jemari anda melukis dan menulis huruf Jawi tunggal dengan betul.</p>
-                    </div>
+   <!-- TAB 3: KANVAS LATIHAN MENULIS -->
+<section id="sec-latihan-menulis" class="tab-content hidden space-y-6">
+    <!-- BAHAGIAN 1: KANVAS LATIHAN -->
+    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+            <div>
+                <h2 class="text-2xl font-bold font-title text-slate-800">✍️ Kanvas Latihan Menulis Huruf Jawi</h2>
+                <p class="text-xs text-slate-500">Latih jemari anda melukis dan menulis huruf Jawi tunggal dengan betul.</p>
+            </div>
 
-                    <div class="flex items-center gap-2">
-                        <label for="practice-letter-select" class="text-sm font-semibold text-slate-700">Pilih Huruf:</label>
-                        <select id="practice-letter-select" onchange="changePracticeLetter()" class="bg-emerald-50 border border-emerald-300 rounded-xl px-3 py-2 text-base font-bold font-jawi text-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                        </select>
+            <div class="flex items-center gap-2">
+                <label for="practice-letter-select" class="text-sm font-semibold text-slate-700">Pilih Huruf:</label>
+                <select id="practice-letter-select" onchange="changePracticeLetter()" class="bg-emerald-50 border border-emerald-300 rounded-xl px-3 py-2 text-base font-bold font-jawi text-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </select>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6 items-center">
+            <div class="md:col-span-4 bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-2xl border border-emerald-200 text-center flex flex-col justify-between h-full">
+                <div>
+                    <span class="text-xs font-bold uppercase text-emerald-600 tracking-wider">Muka Rujukan</span>
+                    <div id="canvas-reference-jawi" class="text-8xl sm:text-9xl font-jawi font-bold text-emerald-800 my-4">
+                        ڤ
                     </div>
+                    <p id="canvas-reference-rumi" class="text-lg font-bold text-slate-700">Pa (p)</p>
+                    <p id="canvas-reference-word" class="text-xs text-slate-500 mt-1">Daripada perkataan "Pandu"</p>
+                </div>
+                <button onclick="playSelectedPracticeLetterAudio()" class="mt-6 bg-white border border-emerald-300 hover:bg-emerald-100 text-emerald-800 text-sm font-semibold py-2 px-4 rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer">
+                    <span>🔊</span> Main Audio Huruf
+                </button>
+            </div>
+
+            <div class="md:col-span-8 flex flex-col items-center">
+                <div class="relative w-full max-w-lg aspect-square bg-amber-50/40 border-2 border-dashed border-slate-300 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                    <div id="canvas-guide" class="absolute inset-0 flex items-center justify-center text-slate-200 font-jawi text-[180px] pointer-events-none select-none opacity-40">
+                        ڤ
+                    </div>
+                    <canvas id="writing-canvas" class="w-full h-full cursor-crosshair relative z-10 touch-none"></canvas>
                 </div>
 
-                <div class="grid md:grid-cols-12 gap-6 items-center">
-                    <div class="md:col-span-4 bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-2xl border border-emerald-200 text-center flex flex-col justify-between h-full">
-                        <div>
-                            <span class="text-xs font-bold uppercase text-emerald-600 tracking-wider">Muka Rujukan</span>
-                            <div id="canvas-reference-jawi" class="text-8xl sm:text-9xl font-jawi font-bold text-emerald-800 my-4">
-                                ڤ
-                            </div>
-                            <p id="canvas-reference-rumi" class="text-lg font-bold text-slate-700">Pa (p)</p>
-                            <p id="canvas-reference-word" class="text-xs text-slate-500 mt-1">Daripada perkataan "Pandu"</p>
-                        </div>
-                        <button onclick="playSelectedPracticeLetterAudio()" class="mt-6 bg-white border border-emerald-300 hover:bg-emerald-100 text-emerald-800 text-sm font-semibold py-2 px-4 rounded-xl transition-all shadow-xs flex items-center justify-center gap-2">
-                            <span>🔊</span> Main Audio Huruf
-                        </button>
+                <div class="flex flex-wrap items-center justify-center gap-3 mt-4 w-full max-w-lg">
+                    <div class="flex items-center gap-1 bg-slate-100 p-1.5 rounded-xl">
+                        <button onclick="setPenColor('#059669')" class="w-7 h-7 rounded-full bg-emerald-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-emerald-400 cursor-pointer"></button>
+                        <button onclick="setPenColor('#2563eb')" class="w-7 h-7 rounded-full bg-blue-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-blue-400 cursor-pointer"></button>
+                        <button onclick="setPenColor('#dc2626')" class="w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-red-400 cursor-pointer"></button>
+                        <button onclick="setPenColor('#09090b')" class="w-7 h-7 rounded-full bg-zinc-900 border-2 border-white shadow-xs focus:ring-2 focus:ring-zinc-400 cursor-pointer"></button>
                     </div>
 
-                    <div class="md:col-span-8 flex flex-col items-center">
-                        <div class="relative w-full max-w-lg aspect-square bg-amber-50/40 border-2 border-dashed border-slate-300 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
-                            <div id="canvas-guide" class="absolute inset-0 flex items-center justify-center text-slate-200 font-jawi text-[180px] pointer-events-none select-none opacity-40">
-                                ڤ
-                            </div>
-                            <canvas id="writing-canvas" class="w-full h-full cursor-crosshair relative z-10 touch-none"></canvas>
-                        </div>
-
-                        <div class="flex flex-wrap items-center justify-center gap-3 mt-4 w-full max-w-lg">
-                            <div class="flex items-center gap-1 bg-slate-100 p-1.5 rounded-xl">
-                                <button onclick="setPenColor('#059669')" class="w-7 h-7 rounded-full bg-emerald-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-emerald-400"></button>
-                                <button onclick="setPenColor('#2563eb')" class="w-7 h-7 rounded-full bg-blue-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-blue-400"></button>
-                                <button onclick="setPenColor('#dc2626')" class="w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-red-400"></button>
-                                <button onclick="setPenColor('#09090b')" class="w-7 h-7 rounded-full bg-zinc-900 border-2 border-white shadow-xs focus:ring-2 focus:ring-zinc-400"></button>
-                            </div>
-
-                            <button onclick="clearCanvas()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-semibold rounded-xl transition-colors">
-                                🧹 Padam / Semula
-                            </button>
-                            <button onclick="saveCanvasDrawing()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-xs">
-                                ✨ Simpan Tulisan
-                            </button>
-                        </div>
-                    </div>
+                    <button onclick="clearCanvas()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-semibold rounded-xl transition-colors cursor-pointer">
+                        🧹 Padam / Semula
+                    </button>
+                    <button onclick="saveCanvasDrawing()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-xs cursor-pointer">
+                        ✨ Simpan Tulisan
+                    </button>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+
+    <!-- BAHAGIAN 2: PADLET / TAPAK PENGHANTARAN -->
+    <div class="py-6 max-w-4xl mx-auto">
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
+            <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+                <div class="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl">
+                    <i data-lucide="upload-cloud" class="w-6 h-6"></i>
+                </div>
+                <h2 class="font-serif-elegant text-xl sm:text-2xl font-bold text-slate-800">Tapak Penghantaran Karya Murid</h2>
+            </div>
+
+            <div class="divide-y divide-slate-100">
+                <!-- Item Padlet -->
+                <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[10px] font-bold uppercase">Padlet Interaktif</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Tapak Penghantaran Hasil Karya</h4>
+                        <p class="text-xs text-slate-500">Muat naik hasil latihan penulisan Jawi anda ke ruangan Padlet kelas.</p>
+                    </div>
+                    <a href="https://padlet.com/gipgp250103585/karya-murid-tahun-6-seni-bahasa-s023wu1207zc8yrli3da" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-100 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1.5 shrink-0 self-start sm:self-auto">
+                        Hantar Hasil <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- TAB 4: KUIZ INTERAKTIF -->
         <section id="sec-kuiz" class="tab-content hidden space-y-6">
