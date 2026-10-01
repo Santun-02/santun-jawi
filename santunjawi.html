@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laman Pembelajaran Seni Bahasa Tahun 6: Pandu Cermat Jiwa Selamat</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -72,19 +77,19 @@
 
                 <!-- Navigation Tabs -->
                 <nav class="flex flex-wrap justify-center gap-1.5 bg-emerald-800/40 p-1.5 rounded-2xl backdrop-blur-sm">
-                    <button onclick="switchTab('sk-sp')" id="tab-sk-sp" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10">
-                        📚 DSKP & Nota
+                    <button onclick="switchTab('sk-sp')" id="tab-sk-sp" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10 cursor-pointer">
+                        📚 DSKP & Nota Guru
                     </button>
-                    <button onclick="switchTab('pembelajaran')" id="tab-pembelajaran" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 tab-active">
+                    <button onclick="switchTab('pembelajaran')" id="tab-pembelajaran" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 tab-active cursor-pointer">
                         🔍 Cerakin Huruf
                     </button>
-                    <button onclick="switchTab('latihan-menulis')" id="tab-latihan-menulis" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10">
+                    <button onclick="switchTab('latihan-menulis')" id="tab-latihan-menulis" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10 cursor-pointer">
                         ✍️ Kanvas Latihan
                     </button>
-                    <button onclick="switchTab('kuiz')" id="tab-kuiz" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10">
+                    <button onclick="switchTab('kuiz')" id="tab-kuiz" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10 cursor-pointer">
                         🎯 Kuiz Interaktif
                     </button>
-                    <button onclick="switchTab('poster')" id="tab-poster" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10">
+                    <button onclick="switchTab('poster')" id="tab-poster" class="tab-btn px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/10 cursor-pointer">
                         🎨 Poster & Lampiran
                     </button>
                 </nav>
@@ -94,7 +99,7 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
 
-        <!-- TAB 1: DSKP & NOTA -->
+        <!-- TAB 1: DSKP & NOTA GURU -->
         <section id="sec-sk-sp" class="tab-content hidden space-y-6">
             <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
                 <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
@@ -165,24 +170,62 @@
                 </p>
             </div>
 
+            <!-- BAHAGIAN 1: VIDEO PEMBELAJARAN YOUTUBE -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase flex items-center gap-1">
+                                <svg class="w-3.5 h-3.5 text-red-600 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                Video Panduan
+                            </span>
+                            <h2 class="text-2xl font-bold font-title text-slate-800">📺 Video Kenali Huruf Jawi</h2>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Saksikan panduan video mengenal Jawi</p>
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-900">
+                        <iframe 
+                            class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/DsBOCe2_UGs?si=0g97UFfEAc0kwi6l" 
+                            title="YouTube video player - Kenali Huruf Jawi" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="mt-3 bg-red-50/60 border border-red-100 rounded-xl p-3 text-xs text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-2">
+                        <span class="font-semibold text-red-900 flex items-center gap-1.5">
+                            🎬 <span>Huruf Jawi <strong>"Pandu Cermat Jiwa Selamat"</strong></span>
+                        </span>
+                        <a href="https://youtu.be/DsBOCe2_UGs" target="_blank" rel="noopener noreferrer" class="text-red-700 hover:text-red-800 underline font-bold flex items-center gap-1 whitespace-nowrap">
+                            Buka di YouTube ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Word Cards -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <button onclick="selectWord('pandu')" id="wbtn-pandu" class="word-card bg-white p-5 rounded-2xl border-2 border-emerald-500 shadow-md hover:shadow-lg transition-all text-center group">
+                <button onclick="selectWord('pandu')" id="wbtn-pandu" class="word-card bg-white p-5 rounded-2xl border-2 border-emerald-500 shadow-md hover:shadow-lg transition-all text-center group cursor-pointer">
                     <span class="block text-3xl sm:text-4xl font-jawi font-bold text-emerald-700 group-hover:scale-110 transition-transform">ڤندو</span>
                     <span class="block text-sm font-bold text-slate-600 mt-2">1. Pandu</span>
                     <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full inline-block mt-1">4 Huruf Tunggal</span>
                 </button>
-                <button onclick="selectWord('cermat')" id="wbtn-cermat" class="word-card bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs hover:border-amber-400 hover:shadow-lg transition-all text-center group">
+                <button onclick="selectWord('cermat')" id="wbtn-cermat" class="word-card bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs hover:border-amber-400 hover:shadow-lg transition-all text-center group cursor-pointer">
                     <span class="block text-3xl sm:text-4xl font-jawi font-bold text-slate-800 group-hover:scale-110 transition-transform">چرمت</span>
                     <span class="block text-sm font-bold text-slate-600 mt-2">2. Cermat</span>
                     <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full inline-block mt-1">4 Huruf Tunggal</span>
                 </button>
-                <button onclick="selectWord('jiwa')" id="wbtn-jiwa" class="word-card bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs hover:border-purple-400 hover:shadow-lg transition-all text-center group">
+                <button onclick="selectWord('jiwa')" id="wbtn-jiwa" class="word-card bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs hover:border-purple-400 hover:shadow-lg transition-all text-center group cursor-pointer">
                     <span class="block text-3xl sm:text-4xl font-jawi font-bold text-slate-800 group-hover:scale-110 transition-transform">جيوا</span>
                     <span class="block text-sm font-bold text-slate-600 mt-2">3. Jiwa</span>
                     <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full inline-block mt-1">4 Huruf Tunggal</span>
                 </button>
-                <button onclick="selectWord('selamat')" id="wbtn-selamat" class="word-card bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs hover:border-rose-400 hover:shadow-lg transition-all text-center group">
+                <button onclick="selectWord('selamat')" id="wbtn-selamat" class="word-card bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs hover:border-rose-400 hover:shadow-lg transition-all text-center group cursor-pointer">
                     <span class="block text-3xl sm:text-4xl font-jawi font-bold text-slate-800 group-hover:scale-110 transition-transform">سلامت</span>
                     <span class="block text-sm font-bold text-slate-600 mt-2">4. Selamat</span>
                     <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full inline-block mt-1">5 Huruf Tunggal</span>
@@ -196,7 +239,7 @@
                         <h3 id="current-word-title" class="text-2xl font-bold font-title text-emerald-800">Perkataan: Pandu (ڤندو)</h3>
                         <p class="text-xs text-slate-500">Tekan kad huruf di bawah untuk memainkan sebutan MP3!</p>
                     </div>
-                    <button onclick="playAudioByKey(currentActiveWordKey)" id="btn-play-word-audio" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-xl transition-colors shadow-xs">
+                    <button onclick="playAudioByKey(currentActiveWordKey)" id="btn-play-word-audio" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-xl transition-colors shadow-xs cursor-pointer">
                         <span>🔊</span> Sebut Perkataan
                     </button>
                 </div>
@@ -214,21 +257,21 @@
             </div>
         </section>
 
-   <!-- TAB 3: KANVAS LATIHAN MENULIS -->
-<section id="sec-latihan-menulis" class="tab-content hidden space-y-6">
+        <!-- TAB 3: KANVAS LATIHAN MENULIS -->
+        <section id="sec-latihan-menulis" class="tab-content hidden space-y-6">
 
-        <!-- BAHAGIAN 1: VIDEO PEMBELAJARAN YOUTUBE -->
+            <!-- BAHAGIAN 1: VIDEO PEMBELAJARAN YOUTUBE -->
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
                 <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
                     <div>
                         <div class="flex items-center gap-2">
                             <span class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase flex items-center gap-1">
                                 <svg class="w-3.5 h-3.5 text-red-600 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                                Video Panduan
+                                Video Panduan Menulis
                             </span>
-                            <h2 class="text-2xl font-bold font-title text-slate-800">📺 Video kenali huruf Jawi</h2>
+                            <h2 class="text-2xl font-bold font-title text-slate-800">📺 Video Panduan Menulis Huruf Jawi</h2>
                         </div>
-                        <p class="text-xs text-slate-500 mt-1">Saksikan panduan video mengenal Jawi </p>
+                        <p class="text-xs text-slate-500 mt-1">Saksikan panduan cara menulis tulisan Jawi dengan betul</p>
                     </div>
                 </div>
 
@@ -236,9 +279,8 @@
                     <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-900">
                         <iframe 
                             class="absolute top-0 left-0 w-full h-full"
-                            <iframe width="560" height="315" 
                             src="https://www.youtube.com/embed/nDrFIC28mhY?si=0Err1csTaJ98BZnP" 
-                            title="YouTube video player" 
+                            title="YouTube video player - Panduan Menulis Jawi" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             referrerpolicy="strict-origin-when-cross-origin" 
@@ -247,97 +289,97 @@
                     </div>
                     <div class="mt-3 bg-red-50/60 border border-red-100 rounded-xl p-3 text-xs text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-2">
                         <span class="font-semibold text-red-900 flex items-center gap-1.5">
-                            🎬 <span>Huruf jawi <strong>"Pandu Cermat Jiwa Selamat"</strong></span>
+                            🎬 <span>Panduan Menulis Huruf Jawi <strong>"Pandu Cermat Jiwa Selamat"</strong></span>
                         </span>
-                        <a href="https://www.youtube.com/embed/nDrFIC28mhY?si=0Err1csTaJ98BZnP" target="_blank" rel="noopener noreferrer" class="text-red-700 hover:text-red-800 underline font-bold flex items-center gap-1 whitespace-nowrap">
+                        <a href="https://youtu.be/nDrFIC28mhY" target="_blank" rel="noopener noreferrer" class="text-red-700 hover:text-red-800 underline font-bold flex items-center gap-1 whitespace-nowrap">
                             Buka di YouTube ↗
                         </a>
                     </div>
                 </div>
             </div>
-    <!-- BAHAGIAN 2: KANVAS LATIHAN -->
-    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
-            <div>
-                <h2 class="text-2xl font-bold font-title text-slate-800">✍️ Kanvas Latihan Menulis Huruf Jawi</h2>
-                <p class="text-xs text-slate-500">Latih jemari anda melukis dan menulis huruf Jawi tunggal dengan betul.</p>
-            </div>
 
-            <div class="flex items-center gap-2">
-                <label for="practice-letter-select" class="text-sm font-semibold text-slate-700">Pilih Huruf:</label>
-                <select id="practice-letter-select" onchange="changePracticeLetter()" class="bg-emerald-50 border border-emerald-300 rounded-xl px-3 py-2 text-base font-bold font-jawi text-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                </select>
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-12 gap-6 items-center">
-            <div class="md:col-span-4 bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-2xl border border-emerald-200 text-center flex flex-col justify-between h-full">
-                <div>
-                    <span class="text-xs font-bold uppercase text-emerald-600 tracking-wider">Muka Rujukan</span>
-                    <div id="canvas-reference-jawi" class="text-8xl sm:text-9xl font-jawi font-bold text-emerald-800 my-4">
-                        ڤ
-                    </div>
-                    <p id="canvas-reference-rumi" class="text-lg font-bold text-slate-700">Pa (p)</p>
-                    <p id="canvas-reference-word" class="text-xs text-slate-500 mt-1">Daripada perkataan "Pandu"</p>
-                </div>
-                <button onclick="playSelectedPracticeLetterAudio()" class="mt-6 bg-white border border-emerald-300 hover:bg-emerald-100 text-emerald-800 text-sm font-semibold py-2 px-4 rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer">
-                    <span>🔊</span> Main Audio Huruf
-                </button>
-            </div>
-
-            <div class="md:col-span-8 flex flex-col items-center">
-                <div class="relative w-full max-w-lg aspect-square bg-amber-50/40 border-2 border-dashed border-slate-300 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
-                    <div id="canvas-guide" class="absolute inset-0 flex items-center justify-center text-slate-200 font-jawi text-[180px] pointer-events-none select-none opacity-40">
-                        ڤ
-                    </div>
-                    <canvas id="writing-canvas" class="w-full h-full cursor-crosshair relative z-10 touch-none"></canvas>
-                </div>
-
-                <div class="flex flex-wrap items-center justify-center gap-3 mt-4 w-full max-w-lg">
-                    <div class="flex items-center gap-1 bg-slate-100 p-1.5 rounded-xl">
-                        <button onclick="setPenColor('#059669')" class="w-7 h-7 rounded-full bg-emerald-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-emerald-400 cursor-pointer"></button>
-                        <button onclick="setPenColor('#2563eb')" class="w-7 h-7 rounded-full bg-blue-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-blue-400 cursor-pointer"></button>
-                        <button onclick="setPenColor('#dc2626')" class="w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-red-400 cursor-pointer"></button>
-                        <button onclick="setPenColor('#09090b')" class="w-7 h-7 rounded-full bg-zinc-900 border-2 border-white shadow-xs focus:ring-2 focus:ring-zinc-400 cursor-pointer"></button>
+            <!-- BAHAGIAN 2: KANVAS LATIHAN -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold font-title text-slate-800">✍️ Kanvas Latihan Menulis Huruf Jawi</h2>
+                        <p class="text-xs text-slate-500">Latih jemari anda melukis dan menulis huruf Jawi tunggal dengan betul.</p>
                     </div>
 
-                    <button onclick="clearCanvas()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-semibold rounded-xl transition-colors cursor-pointer">
-                        🧹 Padam / Semula
-                    </button>
-                    <button onclick="saveCanvasDrawing()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-xs cursor-pointer">
-                        ✨ Simpan Tulisan
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BAHAGIAN 3: PADLET / TAPAK PENGHANTARAN -->
-    <div class="py-6 max-w-4xl mx-auto">
-        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
-            <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
-                <div class="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl">
-                    <i data-lucide="upload-cloud" class="w-6 h-6"></i>
-                </div>
-                <h2 class="font-serif-elegant text-xl sm:text-2xl font-bold text-slate-800">Tapak Penghantaran Karya Murid</h2>
-            </div>
-
-            <div class="divide-y divide-slate-100">
-                <!-- Item Padlet -->
-                <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="space-y-1">
-                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[10px] font-bold uppercase">Padlet Interaktif</span>
-                        <h4 class="font-bold text-slate-800 text-sm">Tapak Penghantaran Hasil Karya</h4>
-                        <p class="text-xs text-slate-500">Hasilkan 1 poster kreatif bertemakan pandu cermat, jiwa selamat menggunakan tulisan jawi yang sudah anda pelajari kemudian muat naik.</p>
+                    <div class="flex items-center gap-2">
+                        <label for="practice-letter-select" class="text-sm font-semibold text-slate-700">Pilih Huruf:</label>
+                        <select id="practice-letter-select" onchange="changePracticeLetter()" class="bg-emerald-50 border border-emerald-300 rounded-xl px-3 py-2 text-base font-bold font-jawi text-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
+                        </select>
                     </div>
-                    <a href="https://padlet.com/gipgp250103585/karya-murid-tahun-6-seni-bahasa-s023wu1207zc8yrli3da" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-100 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1.5 shrink-0 self-start sm:self-auto">
-                        Hantar Hasil <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-6 items-center">
+                    <div class="md:col-span-4 bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-2xl border border-emerald-200 text-center flex flex-col justify-between h-full">
+                        <div>
+                            <span class="text-xs font-bold uppercase text-emerald-600 tracking-wider">Muka Rujukan</span>
+                            <div id="canvas-reference-jawi" class="text-8xl sm:text-9xl font-jawi font-bold text-emerald-800 my-4">
+                                ڤ
+                            </div>
+                            <p id="canvas-reference-rumi" class="text-lg font-bold text-slate-700">Pa (p)</p>
+                            <p id="canvas-reference-word" class="text-xs text-slate-500 mt-1">Daripada perkataan "Pandu"</p>
+                        </div>
+                        <button onclick="playSelectedPracticeLetterAudio()" class="mt-6 bg-white border border-emerald-300 hover:bg-emerald-100 text-emerald-800 text-sm font-semibold py-2 px-4 rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer">
+                            <span>🔊</span> Main Audio Huruf
+                        </button>
+                    </div>
+
+                    <div class="md:col-span-8 flex flex-col items-center">
+                        <div class="relative w-full max-w-lg aspect-square bg-amber-50/40 border-2 border-dashed border-slate-300 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                            <div id="canvas-guide" class="absolute inset-0 flex items-center justify-center text-slate-200 font-jawi text-[180px] pointer-events-none select-none opacity-40">
+                                ڤ
+                            </div>
+                            <canvas id="writing-canvas" class="w-full h-full cursor-crosshair relative z-10 touch-none"></canvas>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-center gap-3 mt-4 w-full max-w-lg">
+                            <div class="flex items-center gap-1 bg-slate-100 p-1.5 rounded-xl">
+                                <button onclick="setPenColor('#059669')" class="w-7 h-7 rounded-full bg-emerald-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-emerald-400 cursor-pointer" title="Warna Hijau"></button>
+                                <button onclick="setPenColor('#2563eb')" class="w-7 h-7 rounded-full bg-blue-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-blue-400 cursor-pointer" title="Warna Biru"></button>
+                                <button onclick="setPenColor('#dc2626')" class="w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-xs focus:ring-2 focus:ring-red-400 cursor-pointer" title="Warna Merah"></button>
+                                <button onclick="setPenColor('#09090b')" class="w-7 h-7 rounded-full bg-zinc-900 border-2 border-white shadow-xs focus:ring-2 focus:ring-zinc-400 cursor-pointer" title="Warna Hitam"></button>
+                            </div>
+
+                            <button onclick="clearCanvas()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-semibold rounded-xl transition-colors cursor-pointer">
+                                🧹 Padam / Semula
+                            </button>
+                            <button onclick="saveCanvasDrawing()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-xs cursor-pointer">
+                                ✨ Simpan Tulisan
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+
+            <!-- BAHAGIAN 3: PADLET / TAPAK PENGHANTARAN -->
+            <div class="py-4 max-w-4xl mx-auto w-full">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+                        <div class="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl">
+                            <i data-lucide="upload-cloud" class="w-6 h-6"></i>
+                        </div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Tapak Penghantaran Karya Murid</h2>
+                    </div>
+
+                    <div class="divide-y divide-slate-100">
+                        <div class="py-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[10px] font-bold uppercase">Padlet Interaktif</span>
+                                <h4 class="font-bold text-slate-800 text-sm">Tapak Penghantaran Hasil Karya</h4>
+                                <p class="text-xs text-slate-500">Hasilkan 1 poster kreatif bertemakan pandu cermat, jiwa selamat menggunakan tulisan jawi yang telah dipelajari kemudian muat naik.</p>
+                            </div>
+                            <a href="https://padlet.com/gipgp250103585/karya-murid-tahun-6-seni-bahasa-s023wu1207zc8yrli3da" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-100 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1.5 shrink-0 self-start sm:self-auto shadow-xs">
+                                Hantar Hasil <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- TAB 4: KUIZ INTERAKTIF -->
         <section id="sec-kuiz" class="tab-content hidden space-y-6">
@@ -359,7 +401,7 @@
                         <div id="quiz-jawi-display" class="text-8xl font-jawi font-bold text-emerald-700 mb-2">
                             ڤ
                         </div>
-                        <button onclick="speakQuizLetter()" class="text-xs text-emerald-600 hover:underline font-semibold inline-flex items-center gap-1">
+                        <button onclick="speakQuizLetter()" class="text-xs text-emerald-600 hover:underline font-semibold inline-flex items-center gap-1 cursor-pointer">
                             🔊 Dengarkan Audio MP3
                         </button>
                     </div>
@@ -372,9 +414,51 @@
                     <div class="text-6xl">🎉</div>
                     <h3 class="text-2xl font-bold font-title text-slate-800">Tahniah! Anda Telah Selesai!</h3>
                     <p class="text-slate-600">Markah akhir anda ialah <span id="final-score" class="font-bold text-emerald-600 text-xl">0</span> / 50</p>
-                    <button onclick="resetQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl transition-colors shadow-md">
+                    <button onclick="resetQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl transition-colors shadow-md cursor-pointer">
                         🔄 Main Semula Kuiz
                     </button>
+                </div>
+            </div>
+
+            <!-- BAHAGIAN 2: QR QUIZ -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase">Kuiz Tambahan</span>
+                            <h2 class="text-2xl font-bold font-title text-slate-800">📌 QR Kuiz Interaktif</h2>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Imbas QR Code di bawah untuk mengakses kuiz tambahan topik Seni Huruf Jawi Tahun 6.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="openImageModal('qr.png', 'QR Kuiz Seni Huruf Jawi')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold rounded-xl transition-all shadow-xs flex items-center gap-1.5 cursor-pointer">
+                            <span>🔍</span> Besarkan QR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-6 items-center">
+                    <div class="md:col-span-7 flex justify-center w-full">
+                        <div class="relative group cursor-pointer overflow-hidden rounded-2xl border-4 border-emerald-100 shadow-lg transition-all duration-300 hover:shadow-xl max-w-md w-full" onclick="openImageModal('qr.png', 'QR Kuiz Seni Huruf Jawi')">
+                            <img src="qr.png" 
+                                 id="qr-attachment-img" 
+                                 alt="QR Kuiz Seni Huruf Jawi" 
+                                 class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/475569?text=Gambar+QR+Tidak+Dijumpai';" />
+                            
+                            <div class="absolute inset-0 bg-emerald-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/90 text-emerald-900 text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm shadow-md">🔍 Klik untuk Zum Masuk</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-5 space-y-3 text-sm text-slate-600">
+                        <h4 class="font-bold text-slate-800 text-base">📱 Arahan Penggunaan QR:</h4>
+                        <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm">
+                            <li>Buka aplikasi kamera atau pengimbas QR pada telefon pintar anda.</li>
+                            <li>Halakan kamera ke arah kod QR di sebelah.</li>
+                            <li>Tekan pautan yang dipaparkan untuk terus menjawab kuiz secara dalam talian.</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>
@@ -393,7 +477,7 @@
                         <p class="text-xs text-slate-500 mt-1">Bahan visual sokongan untuk persembahan dan pengajaran Seni Bahasa Jawi Tahun 6.</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <button onclick="openImageModal()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold rounded-xl transition-all shadow-xs flex items-center gap-1.5">
+                        <button onclick="openImageModal('poster.jpg', 'Poster Pandu Cermat Jiwa Selamat')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold rounded-xl transition-all shadow-xs flex items-center gap-1.5 cursor-pointer">
                             <span>🔍</span> Besarkan Poster
                         </button>
                     </div>
@@ -401,7 +485,7 @@
 
                 <div class="grid md:grid-cols-12 gap-6 items-center">
                     <div class="md:col-span-7 flex justify-center">
-                        <div class="relative group cursor-pointer overflow-hidden rounded-2xl border-4 border-emerald-100 shadow-lg transition-all duration-300 hover:shadow-xl max-w-xl w-full" onclick="openImageModal()">
+                        <div class="relative group cursor-pointer overflow-hidden rounded-2xl border-4 border-emerald-100 shadow-lg transition-all duration-300 hover:shadow-xl max-w-xl w-full" onclick="openImageModal('poster.jpg', 'Poster Pandu Cermat Jiwa Selamat')">
                             <img src="poster.jpg" id="poster-attachment-img" alt="Poster Pandu Cermat Jiwa Selamat" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/800x600/059669/ffffff?text=Poster+Pandu+Cermat+Jiwa+Selamat';">
                             <div class="absolute inset-0 bg-emerald-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                 <span class="bg-white/90 text-emerald-900 text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm shadow-md">🔍 Klik untuk Zum Masuk</span>
@@ -452,125 +536,86 @@
                 </div>
             </div>
 
-            <!-- BAHAGIAN 2: VIDEO PEMBELAJARAN YOUTUBE -->
-            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase flex items-center gap-1">
-                                <svg class="w-3.5 h-3.5 text-red-600 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                                Video Panduan
-                            </span>
-                            <h2 class="text-2xl font-bold font-title text-slate-800">📺 Video kenali huruf Jawi</h2>
+            <!-- BAHAGIAN 2: RUJUKAN -->
+            <div class="py-4 max-w-4xl mx-auto w-full">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+                        <div class="p-2.5 bg-slate-100 text-slate-600 rounded-xl">
+                            <i data-lucide="library" class="w-6 h-6"></i>
                         </div>
-                        <p class="text-xs text-slate-500 mt-1">Saksikan panduan video mengenal Jawi </p>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">Senarai Rujukan Rasmi</h2>
                     </div>
-                </div>
 
-                <div class="max-w-4xl mx-auto">
-                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-900">
-                        <iframe 
-                            class="absolute top-0 left-0 w-full h-full"
-                            <iframe width="560" height="315" 
-                            src="https://www.youtube.com/embed/DsBOCe2_UGs?si=0g97UFfEAc0kwi6l" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            referrerpolicy="strict-origin-when-cross-origin" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="mt-3 bg-red-50/60 border border-red-100 rounded-xl p-3 text-xs text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-2">
-                        <span class="font-semibold text-red-900 flex items-center gap-1.5">
-                            🎬 <span>Huruf jawi <strong>"Pandu Cermat Jiwa Selamat"</strong></span>
-                        </span>
-                        <a href="https://youtu.be/DsBOCe2_UGs" target="_blank" rel="noopener noreferrer" class="text-red-700 hover:text-red-800 underline font-bold flex items-center gap-1 whitespace-nowrap">
-                            Buka di YouTube ↗
-                        </a>
+                    <div class="divide-y divide-slate-100">
+                        <!-- Rujukan 1 -->
+                        <div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-red-50 text-red-600 rounded text-[10px] font-bold uppercase">Sumber Pembelajaran</span>
+                                <h4 class="font-bold text-slate-800 text-sm">Buku Teks Bahasa Melayu Tahun 6, m/s 53</h4>
+                                <p class="text-xs text-slate-500">Kandungan pembelajaran berkaitan tulisan Jawi</p>
+                            </div>
+                            <a href="https://online.anyflip.com/jbdkj/ryfp/mobile/index.html" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-100 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto shadow-xs">
+                                Buka Buku <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                        <!-- Rujukan 2 -->
+                        <div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-bold uppercase">Rujukan Guru</span>
+                                <h4 class="font-bold text-slate-800 text-sm">Dokumen Standard Kurikulum Dan Pentaksiran (DSKP) BM Tahun 6</h4>
+                                <p class="text-xs text-slate-500">Dokumen standard kurikulum DSKP</p>
+                            </div>
+                            <a href="https://anyflip.com/gcmje/dngc/basic" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-100 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto shadow-xs">
+                                Buka Dokumen <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                        <!-- Rujukan 3 -->
+                        <div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-rose-50 text-rose-600 rounded text-[10px] font-bold uppercase">Lagu / Video</span>
+                                <h4 class="font-bold text-slate-800 text-sm">Alif Ba Ta - Huruf Jawi Song By Little Caliphs</h4>
+                                <p class="text-xs text-slate-500">Video pengajaran menyebut dan mengenali huruf Jawi</p>
+                            </div>
+                            <a href="https://youtu.be/Ckd2bZCM58g?si=uP9P7RmQcKAwm7xE" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-100 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto shadow-xs">
+                                Tonton Video <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                        <!-- Rujukan 4 -->
+                        <div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <span class="px-2 py-0.5 bg-purple-50 text-purple-600 rounded text-[10px] font-bold uppercase">Rujukan Ilmiah</span>
+                                <h4 class="font-bold text-slate-800 text-sm">Amir Hazlin Lin, Hasdi Daud, & Aiman Hamidon. (2021). Bahasa Melayu Tahun 6 Sekolah Kebangsaan (KSSR Semakan 2017). Dewan Bahasa dan Pustaka.</h4>
+                                <p class="text-xs text-slate-500">Buku panduan kurikulum utama</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-               <!-- BAHAGIAN 3: RUJUKAN -->
-    <div class="py-6 max-w-4xl mx-auto">
-        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
-            <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
-                <div class="p-2.5 bg-slate-100 text-slate-600 rounded-xl">
-                    <i data-lucide="library" class="w-6 h-6"></i>
-                </div>
-                <h2 class="font-serif-elegant text-xl sm:text-2xl font-bold text-slate-800">Senarai Rujukan Rasmi</h2>
-            </div>
-
-            <div class="divide-y divide-slate-100">
-                <!-- Rujukan 1 -->
-                <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="space-y-1">
-                        <span class="px-2 py-0.5 bg-red-50 text-red-600 rounded text-[10px] font-bold uppercase">sumber pembelajaran</span>
-                        <h4 class="font-bold text-slate-800 text-sm">BUKU TEKS BAHASA MELAYU TAHUN 6, m/s 53</h4>
-                        <p class="text-xs text-slate-500">kandungan pembelajaran berkaitan jawi</p>
-                    </div>
-                    <a href="https://online.anyflip.com/jbdkj/ryfp/mobile/index.html" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-100 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto">
-                        Buka buku <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                    </a>
-                </div>
-
-                <!-- Rujukan 2 -->
-                <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="space-y-1">
-                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-bold uppercase">Rujukan Guru</span>
-                        <h4 class="font-bold text-slate-800 text-sm">DOKUMEN STANDARD KURIKULUMDAN PENTAKSIRAN DARJAH 6</h4>
-                        <p class="text-xs text-slate-500">Rujukan Guru</p>
-                    </div>
-                    <a href="https://anyflip.com/gcmje/dngc/basic" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-100 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto">
-                        Buka dokumen <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                    </a>
-                </div>
-
-                <!-- Rujukan 3 -->
-                <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="space-y-1">
-                        <span class="px-2 py-0.5 bg-rose-50 text-rose-600 rounded text-[10px] font-bold uppercase">lagu</span>
-                        <h4 class="font-bold text-slate-800 text-sm">Alif Ba Ta - Huruf Jawi Song By Little Caliphst</h4>
-                        <p class="text-xs text-slate-500">video pengajaran huruf jawi</p>
-                    </div>
-                    <a href="https://youtu.be/Ckd2bZCM58g?si=uP9P7RmQcKAwm7xE" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-100 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-semibold text-slate-600 transition-all inline-flex items-center gap-1 shrink-0 self-start sm:self-auto">
-                        Tonton Video <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                    </a>
-                </div>
-                  <!-- Rujukan 4 -->
-                <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="space-y-1">
-                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-bold uppercase">Rujukan ilmiah</span>
-                        <h4 class="font-bold text-slate-800 text-sm">Amir Hazlin Lin, Hasdi Daud, & Aiman Hamidon. (2021). Bahasa Melayu Tahun 6 Sekolah Kebangsaan (KSSR Semakan 2017). Dewan Bahasa dan Pustaka</h4>
-                        <p class="text-xs text-slate-500">Rujukan Guru</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
         </section>
 
     </main>
 
-    <!-- MODAL LIGHTBOX UNTUK GAMBAR POSTER -->
+    <!-- MODAL LIGHTBOX UNTUK GAMBAR POSTER / QR -->
     <div id="image-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-opacity">
         <div class="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100 flex flex-col max-h-[90vh]">
             <div class="p-4 bg-emerald-800 text-white flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-lg">🖼️</span>
-                    <h3 class="font-bold font-title text-sm sm:text-base">Lampiran Visual Poster: Pandu Cermat Jiwa Selamat</h3>
+                    <h3 id="modal-display-title" class="font-bold font-title text-sm sm:text-base">Lampiran Visual</h3>
                 </div>
-                <button onclick="closeImageModal()" class="w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full text-white font-bold transition-colors">
+                <button onclick="closeImageModal()" class="w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full text-white font-bold transition-colors cursor-pointer">
                     ✕
                 </button>
             </div>
             <div class="p-4 overflow-auto flex justify-center items-center bg-slate-100 flex-grow">
-                <img src="poster.jpg" alt="Poster Pandu Cermat Jiwa Selamat" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/800x600/059669/ffffff?text=Poster+Pandu+Cermat+Jiwa+Selamat';">
+                <img id="modal-display-img" src="poster.jpg" alt="Lampiran Visual" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/800x600/059669/ffffff?text=Gambar+Tidak+Dijumpai';">
             </div>
             <div class="p-3 bg-slate-50 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500 px-6">
                 <span>Gunakan butang [Esc] atau tekan ✕ untuk tutup</span>
-                <button onclick="closeImageModal()" class="px-4 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-lg transition-colors">
+                <button onclick="closeImageModal()" class="px-4 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-lg transition-colors cursor-pointer">
                     Tutup
                 </button>
             </div>
@@ -675,9 +720,11 @@
                 btn.classList.add('hover:bg-white/10');
             });
 
-            document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+            const targetSection = document.getElementById(`sec-${tabId}`);
+            if (targetSection) targetSection.classList.remove('hidden');
+
             const activeBtn = document.getElementById(`tab-${tabId}`);
-            activeBtn.classList.add('tab-active');
+            if (activeBtn) activeBtn.classList.add('tab-active');
 
             if (tabId === 'latihan-menulis') {
                 setTimeout(initDrawingCanvas, 100);
@@ -713,6 +760,7 @@
         function selectWord(wordKey) {
             currentActiveWordKey = wordKey;
             const data = jawiData[wordKey];
+            if (!data) return;
 
             document.querySelectorAll('.word-card').forEach(card => {
                 card.classList.remove('border-emerald-500', 'shadow-md');
@@ -724,9 +772,11 @@
                 activeCard.classList.remove('border-slate-200');
             }
 
-            document.getElementById('current-word-title').innerText = `Perkataan: ${data.rumi} (${data.jawi})`;
+            const titleEl = document.getElementById('current-word-title');
+            if (titleEl) titleEl.innerText = `Perkataan: ${data.rumi} (${data.jawi})`;
 
             const container = document.getElementById('letters-container');
+            if (!container) return;
             container.innerHTML = '';
 
             data.letters.forEach((item, idx) => {
@@ -862,7 +912,9 @@
         }
 
         function saveCanvasDrawing() {
-            confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+            }
         }
 
         let quizQuestions = [];
@@ -887,13 +939,15 @@
 
         function loadQuizQuestion() {
             const feedback = document.getElementById('quiz-feedback');
-            feedback.classList.add('hidden');
+            if (feedback) feedback.classList.add('hidden');
 
             if (currentQuizIndex >= quizQuestions.length) {
                 document.getElementById('quiz-card').classList.add('hidden');
                 document.getElementById('quiz-complete-view').classList.remove('hidden');
                 document.getElementById('final-score').innerText = quizScore;
-                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                }
                 return;
             }
 
@@ -902,11 +956,12 @@
             document.getElementById('quiz-jawi-display').innerText = q.jawi;
 
             const optionsContainer = document.getElementById('quiz-options');
+            if (!optionsContainer) return;
             optionsContainer.innerHTML = '';
 
             q.options.forEach(opt => {
                 const btn = document.createElement('button');
-                btn.className = "p-4 bg-slate-50 hover:bg-emerald-50 border-2 border-slate-200 hover:border-emerald-400 font-bold rounded-2xl text-slate-700 hover:text-emerald-800 transition-all text-center";
+                btn.className = "p-4 bg-slate-50 hover:bg-emerald-50 border-2 border-slate-200 hover:border-emerald-400 font-bold rounded-2xl text-slate-700 hover:text-emerald-800 transition-all text-center cursor-pointer";
                 btn.innerText = opt;
                 btn.onclick = () => checkQuizAnswer(opt, q.correct);
                 optionsContainer.appendChild(btn);
@@ -915,11 +970,12 @@
 
         function speakQuizLetter() {
             const q = quizQuestions[currentQuizIndex];
-            playAudioByKey(q.audioKey, q.correct);
+            if (q) playAudioByKey(q.audioKey, q.correct);
         }
 
         function checkQuizAnswer(selected, correct) {
             const feedback = document.getElementById('quiz-feedback');
+            if (!feedback) return;
             feedback.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-red-100', 'text-red-800');
 
             if (selected === correct) {
@@ -942,15 +998,21 @@
             initQuiz();
         }
 
-        // Modal Handlers untuk Poster Attachment Gambar
-        function openImageModal() {
+        // Modal Handlers untuk Zum Gambar Dinamik
+        function openImageModal(imgSrc = 'poster.jpg', title = 'Lampiran Visual Poster') {
             const modal = document.getElementById('image-modal');
-            modal.classList.remove('hidden');
+            const modalImg = document.getElementById('modal-display-img');
+            const modalTitle = document.getElementById('modal-display-title');
+
+            if (modalImg) modalImg.src = imgSrc;
+            if (modalTitle) modalTitle.innerText = title;
+
+            if (modal) modal.classList.remove('hidden');
         }
 
         function closeImageModal() {
             const modal = document.getElementById('image-modal');
-            modal.classList.add('hidden');
+            if (modal) modal.classList.add('hidden');
         }
 
         document.addEventListener('keydown', (e) => {
@@ -960,6 +1022,9 @@
         });
 
         window.onload = function() {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
             selectWord('pandu');
             populatePracticeLetterDropdown();
             initQuiz();
